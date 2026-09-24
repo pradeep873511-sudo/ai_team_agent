@@ -6,6 +6,12 @@ from pm_team_agent import manage_project
 from qa_team_agent import qa_test
 from requirements_team_agent import analyze_requirements
 import streamlit as st
+import os
+import streamlit as st
+
+# Force Streamlit Secrets into environment variables at boot
+if "GROQ_API_KEY" in st.secrets:
+  os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 
 logo_exists = os.path.exists("agent_logo.png")
 
